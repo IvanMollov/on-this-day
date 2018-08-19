@@ -1,9 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import { withStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
+import red from '@material-ui/core/colors/red';
 
 const styles = {
+  avatar: {
+    backgroundColor: red[500],
+  }
 };
 
 function getInitials(user) {
