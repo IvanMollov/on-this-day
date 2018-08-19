@@ -13,7 +13,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import Paper from '@material-ui/core/Paper';
 
-import GeneralTabs from './GeneralTabs';
+import GenericTabs from './GenericTabs';
 import CommentsList from './CommentsList';
 import UserAvatar from './UserAvatar';
 
@@ -77,7 +77,7 @@ class Article extends React.Component {
 
         <CardContent>
           <Paper>
-            <GeneralTabs
+            <GenericTabs
               tabsData={[
                 {
                   label: "Article",

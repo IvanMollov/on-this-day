@@ -29,7 +29,7 @@ function generateTabs(tabsData, shownTab) {
   return tabs;
 }
 
-class GeneralTabs extends React.Component {
+class GenericTabs extends React.Component {
   state = {
     value: 0,
   };
@@ -60,8 +60,8 @@ class GeneralTabs extends React.Component {
   }
 }
 
-GeneralTabs.propTypes = {
+GenericTabs.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(GeneralTabs);
+export default withStyles(styles)(GenericTabs);
