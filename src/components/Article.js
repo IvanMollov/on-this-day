@@ -11,15 +11,15 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
+import Paper from '@material-ui/core/Paper';
 
 import GeneralTabs from './GeneralTabs';
 import CommentsList from './CommentsList';
 import UserAvatar from './UserAvatar';
 
-const styles = {
+const styles = theme => ({
   card: {
-    maxWidth: 400,
+    maxWidth: 800,
   },
   media: {
     height: 0,
@@ -27,10 +27,22 @@ const styles = {
   },
   actions: {
     display: 'flex',
+    flexFlow: 'row-reverse'
+  },
+  padded: {
+    ...theme.mixins.gutters(),
+    paddingTop:    theme.spacing.unit * 1,
+    paddingBottom: theme.spacing.unit * 1
   }
-};
+});
 
 class Article extends React.Component {
+  state = { expanded: false };
+
+  handleExpandClick = () => {
+    this.setState(state => ({ expanded: !state.expanded }));
+  };
+
   render() {
     const { classes, user, article } = this.props;
 
@@ -38,13 +50,19 @@ class Article extends React.Component {
       <Card className={classes.card}>
         <CardHeader
           avatar={ <UserAvatar className={classes.avatar} user={user}/> }
-          action={
-            <IconButton>
-              <MoreVertIcon/>
-            </IconButton>
-          }
           title={article.title}
           subheader={article.date}
+          action={
+            <CardActions className={classes.actions} disableActionSpacing>
+              <IconButton aria-label="Add to favorites">
+                <FavoriteIcon />
+              </IconButton>
+    
+              <IconButton aria-label="Share">
+                <ShareIcon />
+              </IconButton>
+            </CardActions>
+          }
         />
 
         <CardMedia
@@ -57,35 +75,26 @@ class Article extends React.Component {
           <Typography>{article.introduction}</Typography>
         </CardContent>
 
-        <CardActions className={classes.actions} disableActionSpacing>
-          <IconButton aria-label="Add to favorites">
-            <FavoriteIcon />
-          </IconButton>
-
-          <IconButton aria-label="Share">
-            <ShareIcon />
-          </IconButton>
-        </CardActions>
-
         <CardContent>
-          <GeneralTabs
-            tabsData={[
-              {
-                label: "Article",
-                content: 
-                  <Typography paragraph variant="body2">
-                    {article.body}
-                  </Typography>
-              },
-              {
-                label: "Comments",
-                content:
-                  <Typography paragraph variant="body2">
-                    <CommentsList comments={article.comments}/>
-                  </Typography>
-              }       
-            ]}
-          />
+          <Paper>
+            <GeneralTabs
+              tabsData={[
+                {
+                  label: "Article",
+                  content:
+                    <Paper className={classes.padded}>
+                      <Typography paragraph variant="body1">
+                        {article.body}
+                      </Typography>
+                    </Paper>
+                },
+                {
+                  label: "Comments",
+                  content: <CommentsList comments={article.comments}/>
+                }       
+              ]}
+            />
+          </Paper>
         </CardContent>
       </Card>
     );
