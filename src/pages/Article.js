@@ -1,18 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Paper from '@material-ui/core/Paper'
+import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 
 import ArticleComponent from '../components/Article';
 
-const styles = {
+const styles = theme => ({
   page: {
     display: 'flex',
     justifyContent: 'center',
-    height: '100vh'
+    height: '100vh',
+    padding: theme.spacing.unit * 5
   }
-};
+});
 
 function getArticle(id) {
   let article;
@@ -20,6 +22,7 @@ function getArticle(id) {
   switch (id) {  
   default:
     article = {
+      id: 0,
       title: "Direct Operations Orchestrator",
       date: "Sun Aug 19 2018 06:36:44 GMT+0300 (EEST)",
       introduction: "Esse officia sunt sequi iusto aut molestiae voluptatem deleniti eos. Ea voluptas ducimus nostrum. Quod eos eum. Consequuntur vero illum.",
@@ -49,7 +52,17 @@ function getArticle(id) {
 class Article extends React.Component {
   render() {
     const classes = this.props.classes;
-    const articleID = this.props.id;
+    const articleID = Number(this.props.match.params.id);
+
+    if (typeof(articleID) !== typeof(Number())) {
+      return (
+        <Paper className={classes.page}>
+          <div className={classes.wrapper}>
+            <Typography>Article not found by ID={this.props.match.params.id}.</Typography>
+          </div>
+        </Paper>
+      )
+    }
 
     return (
       <Paper className={classes.page}>

@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import 'typeface-roboto';
 
@@ -6,6 +7,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
 import Article from './pages/Article';
+import Articles from './pages/Articles';
 
 const theme = createMuiTheme({
   palette: {
@@ -13,17 +15,20 @@ const theme = createMuiTheme({
   },
 });
 
-class App extends Component {
+class App extends React.Component {
   render() {
     return (
-      <React.Fragment>
-        <CssBaseline />
-        <MuiThemeProvider theme={theme}>
-          <div className="App">
-            <Article id={0}/>
-          </div>
-        </MuiThemeProvider>
-      </React.Fragment>
+      <BrowserRouter>
+        <React.Fragment>
+          <CssBaseline />
+          <MuiThemeProvider theme={theme}>
+            <Switch>
+              <Route exact path='/articles' component={Articles}/>
+              <Route path='/articles/:id' component={Article}/>
+            </Switch>
+          </MuiThemeProvider>
+        </React.Fragment>
+      </BrowserRouter>
     );
   };
 };
