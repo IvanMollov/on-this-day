@@ -20,6 +20,7 @@ import UserAvatar from './UserAvatar';
 const styles = theme => ({
   card: {
     maxWidth: 800,
+    margin: theme.spacing.unit * 4
   },
   media: {
     height: 0,
@@ -44,12 +45,12 @@ class Article extends React.Component {
   };
 
   render() {
-    const { classes, user, article } = this.props;
+    const { classes, article } = this.props;
 
     return (
       <Card className={classes.card}>
         <CardHeader
-          avatar={ <UserAvatar className={classes.avatar} user={user}/> }
+          avatar={ <UserAvatar className={classes.avatar} user={article.author}/> }
           title={article.title}
           subheader={article.date}
           action={
