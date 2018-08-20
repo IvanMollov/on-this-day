@@ -66,6 +66,7 @@ class Article extends React.Component {
           }
         />
 
+        {/* TODO: Use a carousel */}
         <CardMedia
           className={classes.media}
           image={article.image}

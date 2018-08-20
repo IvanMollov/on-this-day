@@ -7,13 +7,14 @@ import { withStyles } from '@material-ui/core/styles';
 
 import ArticleComponent from '../components/Article';
 
-import ArticleMockUp from '../mock-ups/Articles';
+import articlesData from '../mock-ups/Articles';
 
 const styles = theme => ({
   page: {
     display: 'flex',
     justifyContent: 'center',
     height: '100vh',
+    overflow: 'auto',
     padding: theme.spacing.unit * 5
   }
 });
@@ -21,7 +22,7 @@ const styles = theme => ({
 function getArticle(id) {
   let article;
 
-  article = ArticleMockUp[id];
+  article = articlesData[id];
   
   return article;
 }
