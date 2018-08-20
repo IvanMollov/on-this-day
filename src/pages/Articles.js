@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types';
 
 import { withStyles } from '@material-ui/core/styles';
@@ -42,7 +42,7 @@ function Articles(props) {
     articlesData.map(article =>
       new Intl.DateTimeFormat('bg-BG', {month: 'numeric', day: 'numeric'}).format(new Date(article.date))
     )
-  ));
+  )).sort((d1, d2) => d2 - d1);
 
   return (
     <Paper className={classes.page}>
@@ -62,7 +62,7 @@ function Articles(props) {
                 return new Intl.DateTimeFormat('bg-BG', {month: 'numeric', day: 'numeric'}).format(new Date(article.date)) === date
               }).map(article => {
                 return (
-                  <GridListTile key={article.image}>
+                  <GridListTile key={article.id}>
                     <Link to={`/articles/${article.id}`}>
                       <img src={article.image} alt={article.title} />
                       <GridListTileBar

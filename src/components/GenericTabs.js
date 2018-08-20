@@ -19,7 +19,7 @@ function generateTabs(tabsData, shownTab) {
 
   for (const tabIdx in tabsData) {
     tabs.labels.push(
-      <Tab label={tabsData[tabIdx].label} />
+      <Tab key={tabIdx} label={tabsData[tabIdx].label} />
     );
     if (shownTab === Number(tabIdx)) {
       tabs.content = tabsData[tabIdx].content
