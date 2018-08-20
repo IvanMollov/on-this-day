@@ -52,7 +52,7 @@ class Article extends React.Component {
         <CardHeader
           avatar={ <UserAvatar className={classes.avatar} user={article.author}/> }
           title={article.title}
-          subheader={article.date}
+          subheader={article.date.toDateString()}
           action={
             <CardActions className={classes.actions} disableActionSpacing>
               <IconButton aria-label="Add to favorites">
