@@ -48,7 +48,7 @@ class Article extends React.Component {
     const { classes, article } = this.props;
 
     return (
-      <Card className={classes.card}>
+      <Card className={classes.card} raised elevation={13}>
         <CardHeader
           avatar={ <UserAvatar className={classes.avatar} user={article.author}/> }
           title={article.title}

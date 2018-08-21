@@ -1,13 +1,21 @@
-import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import React              from 'react';
+import { BrowserRouter, 
+         Switch, 
+         Route }          from 'react-router-dom';
 
 import 'typeface-roboto';
 
-import CssBaseline from '@material-ui/core/CssBaseline';
-import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import CssBaseline        from '@material-ui/core/CssBaseline';
+import { MuiThemeProvider,
+         createMuiTheme } from '@material-ui/core/styles';
 
-import Article from './pages/Article';
-import Articles from './pages/Articles';
+import Article            from './pages/Article';
+import Articles           from './pages/Articles';
+import Contacts           from './pages/Contacts';
+import AboutUs            from './pages/AboutUs';
+
+import MenuBar            from './components/MenuBar';
+import SearchDialog       from './components/SearchDialog';
 
 const theme = createMuiTheme({
   palette: {
@@ -23,8 +31,15 @@ class App extends React.Component {
           <CssBaseline />
           <MuiThemeProvider theme={theme}>
             <Switch>
+              <Route exact path='/' component={Home}>
               <Route exact path='/articles' component={Articles}/>
               <Route path='/articles/:id' component={Article}/>
+              <Route path='/contacts' component={Contacts}/>
+              <Route path='/about-us' component={AboutUs}/>
+
+              {/* dev tests under */}
+              <Route path='/dev/menu-bar/:loggedIn' component={MenuBar}/>
+              <Route path='/dev/search-dialog' component={SearchDialog}/>
             </Switch>
           </MuiThemeProvider>
         </React.Fragment>

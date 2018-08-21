@@ -1,23 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 
+import PageTemplate     from './Template';
 import ArticleComponent from '../components/Article';
 
 import articlesData from '../mock-ups/Articles';
 
-const styles = theme => ({
-  page: {
-    display: 'flex',
-    justifyContent: 'center',
-    height: '100vh',
-    overflow: 'auto',
-    padding: theme.spacing.unit * 5
-  }
-});
+const styles = {}
 
 function getArticle(id) {
   let article;
@@ -32,22 +24,17 @@ class Article extends React.Component {
     const classes = this.props.classes;
     const articleID = Number(this.props.match.params.id);
 
-    if (typeof(articleID) !== typeof(Number())) {
-      return (
-        <Paper className={classes.page}>
-          <div className={classes.wrapper}>
-            <Typography>Article not found by ID={this.props.match.params.id}.</Typography>
-          </div>
-        </Paper>
-      )
-    }
-
     return (
-      <Paper className={classes.page}>
+      <PageTemplate>
         <div className={classes.wrapper}>
-          <ArticleComponent article={getArticle(articleID)}/>
+          {
+            typeof(articleID) !== typeof(Number()) ?
+              <Typography>Article not found by ID={this.props.match.params.id}.</Typography> 
+            :
+              <ArticleComponent article={getArticle(articleID)}/>
+          }
         </div>
-      </Paper>
+      </PageTemplate>
     );
   };
 };
