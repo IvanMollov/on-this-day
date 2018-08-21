@@ -13,6 +13,7 @@ import Article            from './pages/Article';
 import Articles           from './pages/Articles';
 import Contacts           from './pages/Contacts';
 import AboutUs            from './pages/AboutUs';
+import Home               from './pages/Home';
 
 import MenuBar            from './components/MenuBar';
 import SearchDialog       from './components/SearchDialog';
@@ -31,7 +32,7 @@ class App extends React.Component {
           <CssBaseline />
           <MuiThemeProvider theme={theme}>
             <Switch>
-              <Route exact path='/' component={Home}>
+              <Route exact path='/' component={Home}/>
               <Route exact path='/articles' component={Articles}/>
               <Route path='/articles/:id' component={Article}/>
               <Route path='/contacts' component={Contacts}/>

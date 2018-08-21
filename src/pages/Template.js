@@ -26,7 +26,7 @@ class Template extends React.Component {
 
 		return (
 			<Paper className={classes.bodyCover}>
-        <MenuBar user={{logedIn: true}}/>
+        <MenuBar user={{logedIn: false}}/>
         <div className={this.props.classes.pageWrapper}>
           {this.props.children}
         </div>
