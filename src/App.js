@@ -11,7 +11,6 @@ import { MuiThemeProvider,
 
 import Article            from './pages/Article';
 import Articles           from './pages/Articles';
-import Contacts           from './pages/Contacts';
 import AboutUs            from './pages/AboutUs';
 import Home               from './pages/Home';
 
@@ -35,7 +34,6 @@ class App extends React.Component {
               <Route exact path='/' component={Home}/>
               <Route exact path='/articles' component={Articles}/>
               <Route path='/articles/:id' component={Article}/>
-              <Route path='/contacts' component={Contacts}/>
               <Route path='/about-us' component={AboutUs}/>
 
               {/* dev tests under */}

@@ -9,9 +9,11 @@ import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
+import Paper from '@material-ui/core/Paper';
+import Button from "@material-ui/core/Button";
+import AddIcon from '@material-ui/icons/Add';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
-import Paper from '@material-ui/core/Paper';
 
 import GenericTabs from './GenericTabs';
 import CommentsList from './CommentsList';
@@ -34,6 +36,20 @@ const styles = theme => ({
     ...theme.mixins.gutters(),
     paddingTop:    theme.spacing.unit * 1,
     paddingBottom: theme.spacing.unit * 1
+  },
+  button: {
+    marginTop: theme.spacing.unit,
+    marginBottom: theme.spacing.unit * 4,
+    marginLeft: theme.spacing.unit * 4,
+    marginRight: theme.spacing.unit * 4,
+  },
+  addIcon: {
+    marginRight: theme.spacing.unit,
+  },
+  commentsRoot: {
+    display: 'flex',
+    flexFlow: 'column',
+    justifyContent: 'center'
   }
 });
 
@@ -46,6 +62,7 @@ class Article extends React.Component {
 
   render() {
     const { classes, article } = this.props;
+    const logedIn = this.props.user.logedIn;
 
     return (
       <Card className={classes.card} raised elevation={13}>
@@ -92,7 +109,17 @@ class Article extends React.Component {
                 },
                 {
                   label: "Comments",
-                  content: <CommentsList comments={article.comments}/>
+                  content: 
+                    <div className={classes.commentsRoot}>
+                      <CommentsList comments={article.comments}/>
+                      {logedIn && <Button 
+                      variant="extendedFab" 
+                      aria-label="Leave a comment"
+                      className={classes.button}>
+                        <AddIcon className={classes.addIcon}/>
+                        Leave a comment
+                      </Button>}
+                    </div>
                 }       
               ]}
             />

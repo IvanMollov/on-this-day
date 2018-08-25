@@ -66,24 +66,18 @@ class MenuBar extends React.Component {
               </Button>}
 
             <IconButton 
-              color="inherit"
-              onClick={this.handleClickOpen}
-            >
+            color="inherit"
+            onClick={this.handleClickOpen} >
               <SearchIcon/>
             </IconButton>
             
             <SearchDialog 
-              onRef={((ref) => this.child = ref)} 
-              handleClickClose={this.handleClickClose}
-            />
-
-            <Button color="inherit">
-              Articles
-            </Button>
-
-            <Link className={classes.noDecoration} to="/contacts">
+            onRef={((ref) => this.child = ref)} 
+            handleClickClose={this.handleClickClose} />
+            
+            <Link className={classes.noDecoration} to="/articles">
               <Button color="inherit">
-                  Contacts
+                Articles
               </Button>
             </Link>
 

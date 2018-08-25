@@ -7,22 +7,17 @@ import { withStyles } from '@material-ui/core/styles';
 import PageTemplate     from './Template';
 import ArticleComponent from '../components/Article';
 
-import articlesData from '../mock-ups/Articles';
+import queryArticles from '../mock-ups/Articles';
 
 const styles = {}
-
-function getArticle(id) {
-  let article;
-
-  article = articlesData[id];
-  
-  return article;
-}
 
 class Article extends React.Component {
   render() {
     const classes = this.props.classes;
     const articleID = Number(this.props.match.params.id);
+    
+    const article = queryArticles({ ids: [articleID] })[0];
+    console.debug(article);
 
     return (
       <PageTemplate>
@@ -31,7 +26,7 @@ class Article extends React.Component {
             typeof(articleID) !== typeof(Number()) ?
               <Typography>Article not found by ID={this.props.match.params.id}.</Typography> 
             :
-              <ArticleComponent article={getArticle(articleID)}/>
+              <ArticleComponent article={article} user={{logedIn: true}}/>
           }
         </div>
       </PageTemplate>
