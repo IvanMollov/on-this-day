@@ -1,22 +1,25 @@
 import React          from 'react';
 import PropTypes      from 'prop-types';
 
-import Paper          from '@material-ui/core/Paper';
 import { withStyles } from '@material-ui/core/styles';
 
 import MenuBar        from '../components/MenuBar';
+
+import background from '../images/earth.jpg'
 
 const styles = theme => ({
   pageWrapper: {
     display: 'flex',
     justifyContent: 'center',
     overflow: 'auto',
-    padding: theme.spacing.unit * 5
+    padding: theme.spacing.unit * 5,
+    maxWidth: 800
   },
   bodyCover: {
     display: 'block',
     height: '100vh',
-    overflow: 'auto'
+    overflow: 'auto',
+    backgroundImage: `url(${background})`
   }
 });
 
@@ -25,12 +28,14 @@ class Template extends React.Component {
     const { classes } = this.props;
 
 		return (
-			<Paper className={classes.bodyCover}>
+			<div className={classes.bodyCover}>
         <MenuBar user={{logedIn: false}}/>
-        <div className={this.props.classes.pageWrapper}>
-          {this.props.children}
+        <div style={{display: 'flex', justifyContent: 'center'}}>
+          <div className={this.props.classes.pageWrapper}>
+            {this.props.children}
+          </div>
         </div>
-			</Paper>
+			</div>
     );
 	};
 };

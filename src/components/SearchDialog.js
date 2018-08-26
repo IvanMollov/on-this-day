@@ -10,7 +10,11 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
-const styles = {};
+const styles = {
+  narrow: {
+    flexBasis: 170
+  }
+};
 
 class SearchDialog extends React.Component {
   state = {
@@ -35,7 +39,7 @@ class SearchDialog extends React.Component {
   };
 
   handleClose = () => {
-    this.props.handleClickClose();
+    this.props.handleClose();
     this.setState({ open: false });
   };
 
@@ -83,7 +87,7 @@ class SearchDialog extends React.Component {
             fullWidth
             onChange={this.handleKeywordsChange}
           />
-            <div style={{display: 'flex', flexFlow: 'center'}}>
+            <div style={{display: 'flex', justifyContent: 'space-between'}}>
               <TextField
                 id="dateDate"
                 className={this.props.classes.narrow}
@@ -91,8 +95,6 @@ class SearchDialog extends React.Component {
                 InputLabelProps={{
                   shrink: true,
                 }}
-                autoFocus
-                type="number"
                 onChange={this.handleDateChange}
               />
               <TextField
@@ -102,8 +104,6 @@ class SearchDialog extends React.Component {
                 InputLabelProps={{
                   shrink: true,
                 }}
-                autoFocus
-                type="number"
                 onChange={this.handleMonthChange}
               />
               <TextField
@@ -113,15 +113,12 @@ class SearchDialog extends React.Component {
                 InputLabelProps={{
                   shrink: true,
                 }}
-                autoFocus
-                type="number"
                 onChange={this.handleYearChange}
               />
             </div>
           <TextField
             id="user"
             label="User"
-            autoFocus
             margin="dense"
             type="text"
             fullWidth

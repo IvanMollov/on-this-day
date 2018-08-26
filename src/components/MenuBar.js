@@ -12,6 +12,7 @@ import SearchIcon from '@material-ui/icons/Search'
 import { Button } from '@material-ui/core';
 
 import SearchDialog from './SearchDialog';
+import LoginDialog from './LoginDialog';
 
 const styles = {
   root: {
@@ -32,18 +33,30 @@ const styles = {
 
 class MenuBar extends React.Component {
   state = {
-    open: false
+    loginOpen: false,
+    searchOpen: false
   };
 
-  handleClickOpen = () => {
-    if (this.child !== undefined) 
-      this.child.handleClickOpen();
+  handleSearchOpen = () => {
+    if (this.search !== undefined) 
+      this.search.handleClickOpen();
 
-    this.setState({ open: true });
+    this.setState({ searchOpen: true });
   };
 
-  handleClickClose = () => {
-    this.setState({ open: false });
+  handleSearchClose = () => {
+    this.setState({ searchOpen: false });
+  };
+
+  handleLoginOpen = () => {
+    if (this.login !== undefined) 
+      this.login.handleClickOpen();
+
+    this.setState({ loginhOpen: true });
+  };
+
+  handleLoginClose = () => {
+    this.setState({ loginOpen: false });
   };
 
   render() {
@@ -67,13 +80,13 @@ class MenuBar extends React.Component {
 
             <IconButton 
             color="inherit"
-            onClick={this.handleClickOpen} >
+            onClick={this.handleSearchOpen} >
               <SearchIcon/>
             </IconButton>
             
             <SearchDialog 
-            onRef={((ref) => this.child = ref)} 
-            handleClickClose={this.handleClickClose} />
+            onRef={((ref) => this.search = ref)} 
+            handleClose={this.handleSearchClose} />
             
             <Link className={classes.noDecoration} to="/articles">
               <Button color="inherit">
@@ -87,13 +100,17 @@ class MenuBar extends React.Component {
               </Button>
             </Link>
 
+            <LoginDialog
+            onRef={((ref) => this.login = ref)} 
+            handleClose={this.handleLoginClose}/>
+
             {logedIn ? (
               <IconButton color="inherit">
                 <AccountCircle />
               </IconButton>
             ): (
-              <Button variant="outlined" color="inherit">
-                Signin/signup
+              <Button variant="outlined" color="inherit" onClick={this.handleLoginOpen}>
+                Login/signup
               </Button>
             )}
           </Toolbar>

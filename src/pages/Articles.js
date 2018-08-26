@@ -12,7 +12,7 @@ const styles = {};
 function Articles(props) {
   return (
     <PageTemplate>
-      <ArticlesComponent criteria={'all'}/>
+      <ArticlesComponent criteria={'all'} withSubheaders={true}/>
     </PageTemplate>
   );
 }

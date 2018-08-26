@@ -14,7 +14,7 @@ import queryArticles from '../mock-ups/Articles';
 
 const styles = {
   gridList: {
-    width: 800
+    maxWidth: 800
   },
   icon: {
     color: 'rgba(255, 255, 255, 0.54)',
@@ -24,6 +24,7 @@ const styles = {
 function Articles(props) {
   const { classes } = props;
   const { criteria } = props;
+  const { withSubheaders } = props;
 
   const articlesData = queryArticles(criteria);
 
@@ -38,7 +39,7 @@ function Articles(props) {
       {articleDates.map((date) => {
         let tiles = [];
         
-        tiles.push(
+        withSubheaders && tiles.push(
           <GridListTile key="Subheader" style={{ height: 'auto' }}>
             <ListSubheader component="div">{date}</ListSubheader>
           </GridListTile>
