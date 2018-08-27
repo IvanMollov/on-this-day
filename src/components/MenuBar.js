@@ -16,6 +16,8 @@ import SearchIcon    from '@material-ui/icons/Search'
 import SearchDialog  from './SearchDialog';
 import LoginDialog   from './LoginDialog';
 
+import Session       from '../utils/Session'
+
 const styles = {
   root: {
     flexGrow: 1,
@@ -62,7 +64,6 @@ class MenuBar extends React.Component {
   };
 
   render() {
-    const logedIn = this.props.user.logedIn;
     const classes = this.props.classes;
 
     return (
@@ -74,11 +75,18 @@ class MenuBar extends React.Component {
                 On This Day
               </Link>
             </Typography>
-
-            {logedIn && 
-              <Button variant="outlined" color="secondary">
-                New Article
-              </Button>}
+            
+            <Session.Consumer>
+              {(session) => {
+                if (session.isLoggedin) {
+                  return (
+                    <Button variant="outlined" color="secondary">
+                      New Article
+                    </Button>
+                  );
+                }
+              }}
+            </Session.Consumer>
 
             <IconButton 
             color="inherit"
@@ -105,16 +113,19 @@ class MenuBar extends React.Component {
             <LoginDialog
             onRef={((ref) => this.login = ref)} 
             handleClose={this.handleLoginClose}/>
-
-            {logedIn ? (
-              <IconButton color="inherit">
-                <AccountCircle />
-              </IconButton>
-            ): (
-              <Button variant="outlined" color="inherit" onClick={this.handleLoginOpen}>
-                Login/signup
-              </Button>
-            )}
+            
+            <Session.Consumer>
+              {(session) => {
+                return session.isLoggedin ?
+                  <IconButton color="inherit">
+                    <AccountCircle />
+                  </IconButton>
+                :
+                  <Button variant="outlined" color="inherit" onClick={this.handleLoginOpen}>
+                    Login/signup
+                  </Button>
+              }}
+            </Session.Consumer>
           </Toolbar>
         </AppBar>
       </div>

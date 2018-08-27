@@ -18,17 +18,14 @@ class Article extends React.Component {
     const articleID = Number(this.props.match.params.id);
     
     const article = queryArticles({ ids: [articleID] })[0];
-    console.debug(article);
 
     return (
       <PageTemplate>
         <div className={classes.wrapper}>
-          {
-            typeof(articleID) !== typeof(Number()) ?
+          {typeof(articleID) !== typeof(Number()) ?
               <Typography>Article not found by ID={this.props.match.params.id}.</Typography> 
             :
-              <ArticleComponent article={article} user={{logedIn: true}}/>
-          }
+              <ArticleComponent article={article}/>}
         </div>
       </PageTemplate>
     );

@@ -12,6 +12,8 @@ import DialogTitle   from '@material-ui/core/DialogTitle';
 
 import LoginDialog   from './LoginDialog'
 
+import Session       from '../utils/Session'
+
 const styles = {
   narrow: {
     flexBasis: 170
@@ -45,6 +47,7 @@ class SignupDialog extends React.Component {
 
   handleSignup = () => {
     this.setState({ open: false });
+    this.handleClose();
   };
 
   handleLoginOpen = () => {
@@ -135,7 +138,20 @@ class SignupDialog extends React.Component {
           <Button onClick={this.handleClose} color="secondary">
             Cancel
           </Button>
-          <Button onClick={this.handleFind} color="primary">
+
+          <Session.Consumer>
+            {(session) => (
+              <Button onClick={() => {
+                session.onLoginChange();
+                this.handleSignup();
+              }} 
+              color="primary">
+                Signup!
+              </Button>
+            )}
+          </Session.Consumer>
+
+          <Button onClick={this.handleSignup} color="primary">
             Signup!
           </Button>
         </DialogActions>

@@ -11,7 +11,9 @@ import PageTemplate   from './Template';
 import Articles       from '../components/Articles'
 
 import LoginDialog    from '../components/LoginDialog';
-import SignupDialog   from '../components/SignupDialog'
+import SignupDialog   from '../components/SignupDialog';
+
+import Session        from '../utils/Session'
 
 const styles = theme => ({
   root: {
@@ -36,7 +38,6 @@ const styles = theme => ({
 
 class Home extends React.Component {
   state = {
-    logedIn: false,
     loginOpen: false,
     signupOpen: false
   };
@@ -79,18 +80,27 @@ class Home extends React.Component {
 
           <LoginDialog
           onRef={((ref) => this.login = ref)} 
-          handleClose={this.handleLoginClose}/>
+          handleClose={this.handleLoginClose}
+          handleLoginChange={this.props.onLoginChange}/>
 
           <SignupDialog
           onRef={((ref) => this.signup = ref)} 
-          handleClose={this.handleSignupClose}/>
+          handleClose={this.handleSignupClose}
+          handleLoginChange={this.props.onLoginChange}/>
 
-          {!this.state.logedIn && 
-          <Paper className={classnames(classes.padded, classes.marginTop)}>
-            <Typography>
-              To see our archives, write new articles or leave comments about articles you should <Button color="secondary" onClick={this.handleLoginOpen}>login</Button>. Don't have an account? <Button color="secondary" onClick={this.handleSignupOpen}>Signup</Button> for free!
-            </Typography>
-          </Paper>}
+          <Session.Consumer>
+            {(session) => {
+              if (session.isLoggedin) {
+                return (
+                  <Paper className={classnames(classes.padded, classes.marginTop)}>
+                    <Typography>
+                      To see our archives, write new articles or leave comments about articles you should <Button color="secondary" onClick={this.handleLoginOpen}>login</Button>. Don't have an account? <Button color="secondary" onClick={this.handleSignupOpen}>Signup</Button> for free!
+                    </Typography>
+                  </Paper>
+                );
+              }
+            }}
+          </Session.Consumer>
         </Paper>
       </PageTemplate>
     );

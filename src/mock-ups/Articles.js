@@ -107,7 +107,6 @@ function queryArticles(criteria) {
   let matchingArticles = articles;
 
   if (criteria.hasOwnProperty('dates')) {
-    console.debug('has dates');
     matchingArticles = matchingArticles.filter((article) => {
       return criteria.dates.some((date) => {
         return article.date.getMonth() === date.getMonth() &&
@@ -117,7 +116,6 @@ function queryArticles(criteria) {
   }
 
   if (criteria.hasOwnProperty('ids')) {
-    console.debug('has ids');
     matchingArticles = matchingArticles.filter((article) => {
       return criteria.ids.some((id) => {
         return article.id === id;
@@ -125,7 +123,6 @@ function queryArticles(criteria) {
     });
   }
 
-  console.debug(matchingArticles);
   return matchingArticles;
 }
 

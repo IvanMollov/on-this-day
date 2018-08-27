@@ -29,7 +29,7 @@ class Template extends React.Component {
 
 		return (
 			<div className={classes.bodyCover}>
-        <MenuBar user={{logedIn: false}}/>
+        <MenuBar/>
         <div style={{display: 'flex', justifyContent: 'center'}}>
           <div className={this.props.classes.pageWrapper}>
             {this.props.children}

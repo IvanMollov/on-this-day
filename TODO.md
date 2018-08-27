@@ -17,6 +17,5 @@
 * remove this TODO file. change it with issues page in github
 * make a fake backend project
 * use absolute paths
-* not logedin component
 * extract Dialogs in another component
 * switch from signup dialog to login dialog and vice versa

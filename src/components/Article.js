@@ -21,6 +21,8 @@ import GenericTabs  from './GenericTabs';
 import CommentsList from './CommentsList';
 import UserAvatar   from './UserAvatar';
 
+import Session      from '../utils/Session'
+
 const styles = theme => ({
   card: {
     maxWidth: 800,
@@ -64,7 +66,6 @@ class Article extends React.Component {
 
   render() {
     const { classes, article } = this.props;
-    const logedIn = this.props.user.logedIn;
 
     return (
       <Card className={classes.card} raised elevation={13}>
@@ -114,13 +115,17 @@ class Article extends React.Component {
                   content: 
                     <div className={classes.commentsRoot}>
                       <CommentsList comments={article.comments}/>
-                      {logedIn && <Button 
-                      variant="extendedFab" 
-                      aria-label="Leave a comment"
-                      className={classes.button}>
-                        <AddIcon className={classes.addIcon}/>
-                        Leave a comment
-                      </Button>}
+                      <Session.Consumer>
+                      {session => (
+                        session.isLoggedin && 
+                        <Button 
+                        variant="extendedFab" 
+                        aria-label="Leave a comment"
+                        className={classes.button}>
+                          <AddIcon className={classes.addIcon}/>
+                          Leave a comment
+                        </Button>)}
+                      </Session.Consumer>
                     </div>
                 }       
               ]}

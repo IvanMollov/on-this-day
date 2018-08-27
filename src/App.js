@@ -9,13 +9,12 @@ import CssBaseline        from '@material-ui/core/CssBaseline';
 import { MuiThemeProvider,
          createMuiTheme } from '@material-ui/core/styles';
 
-import MenuBar            from './components/MenuBar';
-import SearchDialog       from './components/SearchDialog';
-
 import Article            from './pages/Article';
 import Articles           from './pages/Articles';
 import AboutUs            from './pages/AboutUs';
 import Home               from './pages/Home';
+
+import Session            from './utils/Session';
 
 const theme = createMuiTheme({
   palette: {
@@ -24,25 +23,39 @@ const theme = createMuiTheme({
 });
 
 class App extends React.Component {
+  constructor() {
+    super();
+
+    this.state = {
+      isLoggedin: false,
+      onLoginChange: this.toggleLoggedin
+    }
+  }
+
+  toggleLoggedin = () => {
+    console.debug(`toggleLoggedin: ${this.state.isLoggedin}`)
+    this.state.isLoggedin = !this.state.isLoggedin;
+    console.debug(`toggleLoggedin: ${this.state.isLoggedin}`)
+    return this.state.isLoggedin
+  }
+
   render() {
     return (
-      <BrowserRouter>
-        <React.Fragment>
-          <CssBaseline />
-          <MuiThemeProvider theme={theme}>
-            <Switch>
-              <Route exact path='/' component={Home}/>
-              <Route exact path='/articles' component={Articles}/>
-              <Route path='/articles/:id' component={Article}/>
-              <Route path='/about-us' component={AboutUs}/>
-
-              {/* dev tests under */}
-              <Route path='/dev/menu-bar/:loggedIn' component={MenuBar}/>
-              <Route path='/dev/search-dialog' component={SearchDialog}/>
-            </Switch>
-          </MuiThemeProvider>
-        </React.Fragment>
-      </BrowserRouter>
+      <Session.Provider value={this.state}>
+        <BrowserRouter>
+          <React.Fragment>
+            <CssBaseline />
+            <MuiThemeProvider theme={theme}>
+              <Switch>
+                <Route exact path='/'         component={Home}    />
+                <Route exact path='/articles' component={Articles}/>
+                <Route path='/articles/:id'   component={Article} />
+                <Route path='/about-us'       component={AboutUs} />
+              </Switch>
+            </MuiThemeProvider>
+          </React.Fragment>
+        </BrowserRouter>
+      </Session.Provider>
     );
   };
 };
