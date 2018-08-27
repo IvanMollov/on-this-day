@@ -1,13 +1,14 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React            from 'react';
+import PropTypes        from 'prop-types';
 
-import Typography from '@material-ui/core/Typography';
-import { withStyles } from '@material-ui/core/styles';
+import Typography       from '@material-ui/core/Typography';
+import withStyles       from '@material-ui/core/styles/withStyles';
 
-import PageTemplate     from './Template';
 import ArticleComponent from '../components/Article';
 
-import queryArticles from '../mock-ups/Articles';
+import PageTemplate     from './Template';
+
+import queryArticles    from '../mock-ups/Articles';
 
 const styles = {}
 

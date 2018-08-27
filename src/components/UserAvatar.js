@@ -1,9 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React      from 'react';
+import PropTypes  from 'prop-types';
 
-import { withStyles } from '@material-ui/core/styles';
-import Avatar from '@material-ui/core/Avatar';
-import red from '@material-ui/core/colors/red';
+import withStyles from '@material-ui/core/styles/withStyles';
+
+import red        from '@material-ui/core/colors/red';
+
+import Avatar     from '@material-ui/core/Avatar';
 
 const styles = {
   avatar: {

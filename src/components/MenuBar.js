@@ -1,18 +1,20 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import React         from 'react';
+import { Link }      from 'react-router-dom';
+import PropTypes     from 'prop-types';
 
-import { withStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
+import withStyles    from '@material-ui/core/styles/withStyles';
+
+import AppBar        from '@material-ui/core/AppBar';
+import Toolbar       from '@material-ui/core/Toolbar';
+import Typography    from '@material-ui/core/Typography';
+import Button        from '@material-ui/core/Button';
+import IconButton    from '@material-ui/core/IconButton';
+
 import AccountCircle from '@material-ui/icons/AccountCircle';
-import SearchIcon from '@material-ui/icons/Search'
-import { Button } from '@material-ui/core';
+import SearchIcon    from '@material-ui/icons/Search'
 
-import SearchDialog from './SearchDialog';
-import LoginDialog from './LoginDialog';
+import SearchDialog  from './SearchDialog';
+import LoginDialog   from './LoginDialog';
 
 const styles = {
   root: {

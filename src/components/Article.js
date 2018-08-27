@@ -1,23 +1,25 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React        from 'react';
+import PropTypes    from 'prop-types';
 
-import { withStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardHeader from '@material-ui/core/CardHeader';
-import CardMedia from '@material-ui/core/CardMedia';
-import CardContent from '@material-ui/core/CardContent';
-import CardActions from '@material-ui/core/CardActions';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
-import Paper from '@material-ui/core/Paper';
-import Button from "@material-ui/core/Button";
-import AddIcon from '@material-ui/icons/Add';
+import withStyles   from '@material-ui/core/styles/withStyles';
+
+import Card         from '@material-ui/core/Card';
+import CardHeader   from '@material-ui/core/CardHeader';
+import CardMedia    from '@material-ui/core/CardMedia';
+import CardContent  from '@material-ui/core/CardContent';
+import CardActions  from '@material-ui/core/CardActions';
+import IconButton   from '@material-ui/core/IconButton';
+import Typography   from '@material-ui/core/Typography';
+import Paper        from '@material-ui/core/Paper';
+import Button       from "@material-ui/core/Button";
+
+import AddIcon      from '@material-ui/icons/Add';
 import FavoriteIcon from '@material-ui/icons/Favorite';
-import ShareIcon from '@material-ui/icons/Share';
+import ShareIcon    from '@material-ui/icons/Share';
 
-import GenericTabs from './GenericTabs';
+import GenericTabs  from './GenericTabs';
 import CommentsList from './CommentsList';
-import UserAvatar from './UserAvatar';
+import UserAvatar   from './UserAvatar';
 
 const styles = theme => ({
   card: {

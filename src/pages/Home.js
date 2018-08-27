@@ -1,17 +1,17 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classnames from 'classnames'
+import React          from 'react';
+import PropTypes      from 'prop-types';
+import classnames     from 'classnames'
 
-import { withStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import { Typography } from '@material-ui/core';
-import Button from '@material-ui/core/Button';
+import withStyles     from '@material-ui/core/styles/withStyles';
+import Paper          from '@material-ui/core/Paper';
+import Typography     from '@material-ui/core/Typography';
+import Button         from '@material-ui/core/Button';
 
 import PageTemplate   from './Template';
-import Articles from '../components/Articles'
+import Articles       from '../components/Articles'
 
-import LoginDialog from '../components/LoginDialog';
-import SignupDialog from '../components/SignupDialog'
+import LoginDialog    from '../components/LoginDialog';
+import SignupDialog   from '../components/SignupDialog'
 
 const styles = theme => ({
   root: {

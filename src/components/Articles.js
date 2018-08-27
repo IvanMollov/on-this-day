@@ -1,16 +1,16 @@
-import React from 'react';
-import { Link } from 'react-router-dom'
-import PropTypes from 'prop-types';
+import React           from 'react';
+import {Link}          from 'react-router-dom'
+import PropTypes       from 'prop-types';
 
-import { withStyles } from '@material-ui/core/styles';
-import ListSubheader from '@material-ui/core/ListSubheader';
-import GridList from '@material-ui/core/GridList';
-import GridListTile from '@material-ui/core/GridListTile';
+import withStyles      from '@material-ui/core/styles/withStyles';
+import ListSubheader   from '@material-ui/core/ListSubheader';
+import GridList        from '@material-ui/core/GridList';
+import GridListTile    from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
-import IconButton from '@material-ui/core/IconButton';
-import InfoIcon from '@material-ui/icons/Info';
+import IconButton      from '@material-ui/core/IconButton';
+import InfoIcon        from '@material-ui/icons/Info';
 
-import queryArticles from '../mock-ups/Articles';
+import queryArticles   from '../mock-ups/Articles';
 
 const styles = {
   gridList: {

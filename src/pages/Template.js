@@ -1,9 +1,9 @@
-import React          from 'react';
-import PropTypes      from 'prop-types';
+import React      from 'react';
+import PropTypes  from 'prop-types';
 
-import { withStyles } from '@material-ui/core/styles';
+import withStyles from '@material-ui/core/styles/withStyles';
 
-import MenuBar        from '../components/MenuBar';
+import MenuBar    from '../components/MenuBar';
 
 import background from '../images/earth.jpg'
 

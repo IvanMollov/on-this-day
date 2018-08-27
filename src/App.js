@@ -3,19 +3,19 @@ import { BrowserRouter,
          Switch, 
          Route }          from 'react-router-dom';
 
-import 'typeface-roboto';
+import                         'typeface-roboto';
 
 import CssBaseline        from '@material-ui/core/CssBaseline';
 import { MuiThemeProvider,
          createMuiTheme } from '@material-ui/core/styles';
 
+import MenuBar            from './components/MenuBar';
+import SearchDialog       from './components/SearchDialog';
+
 import Article            from './pages/Article';
 import Articles           from './pages/Articles';
 import AboutUs            from './pages/AboutUs';
 import Home               from './pages/Home';
-
-import MenuBar            from './components/MenuBar';
-import SearchDialog       from './components/SearchDialog';
 
 const theme = createMuiTheme({
   palette: {
