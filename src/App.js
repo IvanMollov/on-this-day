@@ -13,8 +13,10 @@ import Article            from './pages/Article';
 import Articles           from './pages/Articles';
 import AboutUs            from './pages/AboutUs';
 import Home               from './pages/Home';
+import CreateArticle      from './pages/CreateArticle'
 
 import Session            from './utils/Session';
+import UserProfile        from './pages/UserProfile';
 
 const theme = createMuiTheme({
   palette: {
@@ -51,6 +53,10 @@ class App extends React.Component {
                 <Route exact path='/articles' component={Articles}/>
                 <Route path='/articles/:id'   component={Article} />
                 <Route path='/about-us'       component={AboutUs} />
+                <Route path='/createArticle'  component={CreateArticle}/>
+
+                {/* dev */}
+                <Route path='/users/:id'      component={UserProfile}/>
               </Switch>
             </MuiThemeProvider>
           </React.Fragment>

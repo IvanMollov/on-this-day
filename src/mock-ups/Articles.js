@@ -120,7 +120,7 @@ const articles = [{
     }
   }];
 
-function queryArticles(criteria) {
+function query(criteria) {
   if (criteria === 'all') {
     return articles;
   }
@@ -147,4 +147,4 @@ function queryArticles(criteria) {
   return matchingArticles;
 }
 
-export default queryArticles;
+export default query;

@@ -80,9 +80,11 @@ class MenuBar extends React.Component {
               {(session) => {
                 if (session.isLoggedin) {
                   return (
-                    <Button variant="outlined" color="secondary">
-                      New Article
-                    </Button>
+                    <Link className={classes.noDecoration} to="/createArticle">
+                      <Button variant="outlined" color="secondary">
+                        New Article
+                      </Button>
+                    </Link>
                   );
                 }
               }}

@@ -106,7 +106,7 @@ class Home extends React.Component {
                 open={!session.isLogedin}
                 onClose={this.handleClose}
                 message={<Typography style={{color: blueGrey[500]}}>
-                  To see our archives, write new articles or leave comments about articles you should <span className={classes.a} onClick={this.handleLoginOpen}>login</span>. Don't have an account? <span className={classes.a} onClick={this.handleSignupOpen}>Signup</span> for free!
+                  To write new articles or leave comments about articles you should <span className={classes.a} onClick={this.handleLoginOpen}>login</span>. Don't have an account? <span className={classes.a} onClick={this.handleSignupOpen}>Signup</span> for free!
                 </Typography>}/>
               );
             }}
