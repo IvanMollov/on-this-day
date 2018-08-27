@@ -5,7 +5,10 @@ import classnames     from 'classnames'
 import withStyles     from '@material-ui/core/styles/withStyles';
 import Paper          from '@material-ui/core/Paper';
 import Typography     from '@material-ui/core/Typography';
-import Button         from '@material-ui/core/Button';
+import Snackbar       from '@material-ui/core/Snackbar'
+
+import pink           from '@material-ui/core/colors/pink';
+import blueGrey       from '@material-ui/core/colors/blueGrey'
 
 import PageTemplate   from './Template';
 import Articles       from '../components/Articles'
@@ -33,6 +36,13 @@ const styles = theme => ({
   },
   article: {
     width: 600
+  },
+  a: {
+    color: pink[500],
+    cursor: 'pointer'
+  },
+  dark: {
+    backgroundColor: pink[500]
   }
 });
 
@@ -88,17 +98,17 @@ class Home extends React.Component {
           handleClose={this.handleSignupClose}
           handleLoginChange={this.props.onLoginChange}/>
 
-          <Session.Consumer>
+          <Session.Consumer className={classes.dark}>
             {(session) => {
-              if (session.isLoggedin) {
-                return (
-                  <Paper className={classnames(classes.padded, classes.marginTop)}>
-                    <Typography>
-                      To see our archives, write new articles or leave comments about articles you should <Button color="secondary" onClick={this.handleLoginOpen}>login</Button>. Don't have an account? <Button color="secondary" onClick={this.handleSignupOpen}>Signup</Button> for free!
-                    </Typography>
-                  </Paper>
-                );
-              }
+              return (
+                <Snackbar className={classes.dark}
+                anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+                open={!session.isLogedin}
+                onClose={this.handleClose}
+                message={<Typography style={{color: blueGrey[500]}}>
+                  To see our archives, write new articles or leave comments about articles you should <span className={classes.a} onClick={this.handleLoginOpen}>login</span>. Don't have an account? <span className={classes.a} onClick={this.handleSignupOpen}>Signup</span> for free!
+                </Typography>}/>
+              );
             }}
           </Session.Consumer>
         </Paper>
