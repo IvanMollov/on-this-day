@@ -1,21 +1,22 @@
 # TODO List for 'On this day'
 
-* Merge with master
-    * Add the home page
+* ~~Merge with master~~
+    * ~~Add the home page~~
 * ~~Routings~~
-* 'Add Comment' button
-* 'Create Article' button
+* ~~'Add Comment' button~~
+* ~~'Create Article' button~~
+    * 'Create Article' page
 * ~~'Search' dialog~~
-* nice README
-* clean unnecessary code
-* format
+* ~~nice README~~
+* ~~clean unnecessary code~~
+* ~~format~~
 * ~~change primary color~~
 * dates in search and in UI
-* add favicon.ico
+* ~~add favicon.ico~~
 * add multiple media content for each article
 * export an article to facebook post
 * remove this TODO file. change it with issues page in github
 * make a fake backend project
 * use absolute paths
-* extract Dialogs in another component
-* switch from signup dialog to login dialog and vice versa
+* ~~extract Dialogs in another component~~
+* ~~switch from signup dialog to login dialog and vice versa~~
